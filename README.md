@@ -6,6 +6,7 @@ This system is designed to simplify the process of selling products and services
 
 ## Admin
 
+ - Need Internet!!!
  - In DatabaseSeeder.php, I created admin account.
  - When login, admin role can go to admin dashboard.
  - Admin can manage CRUD products.
