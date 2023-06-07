@@ -12,7 +12,7 @@ class OrderController extends Controller
     public function orderList() {
         $orders = Order::select('orders.*', 'users.name as user_name')
                         ->leftJoin('users', 'users.id', 'orders.user_id')
-                        ->orderBy('created_at', 'desc')
+                        ->orderBy('id', 'desc')
                         ->get();
 
         return view('admin.orders.list', compact('orders'));
@@ -22,7 +22,7 @@ class OrderController extends Controller
     public function orderStatus(Request $request) {
         $orders = Order::select('orders.*', 'users.name as user_name')
                         ->leftJoin('users', 'users.id', 'orders.user_id')
-                        ->orderBy('created_at', 'desc');
+                        ->orderBy('id', 'desc');
 
         if ($request->status == null) {
             $orders = $orders->get();
