@@ -42,8 +42,8 @@ class ProductController extends Controller
             'category_id' => 'required',
             'description' => 'required|min:10',
             'image' => 'required|mimes:png,jpg,jpeg,webp|file',
-            'price' => 'required',
-            'waiting_time' => 'required',
+            'price' => 'required|integer',
+            'waiting_time' => 'required|integer',
         ]);
 
         $imageName = uniqid() . $request->file('image')->getClientOriginalName();

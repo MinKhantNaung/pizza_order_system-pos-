@@ -36,7 +36,7 @@
                                             <select name="category_id" id="category" value="{{ old('category_id') }}" class="form-select @error('category_id') is-invalid @enderror">
                                                 <option value="">Choose Category...</option>
                                                 @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                                 @endforeach
                                             </select>
                                             @error('category_id')
