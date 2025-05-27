@@ -46,14 +46,12 @@ This system is designed to simplify the process of selling products and services
   - **php artisan key:generate**
 - Create an empty database for my web project
   - created database name must match from .env file
-- Start npm 
-  - **npm run build**
-- Seed Database
-  - **php artisan db:seed**
 - Delete storage folder from public/ and link storage
   - **php artisan storage:link**
 - Migrate
   - **php artisan migrate**
+- Seed Database
+  - **php artisan db:seed**
 - Start 
   - **php artisan serve**
 - type in url with port 
