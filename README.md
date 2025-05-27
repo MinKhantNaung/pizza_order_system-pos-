@@ -3,6 +3,14 @@
 
 This system is designed to simplify the process of selling products and services, while also providing accurate and real-time inventory management.
 
+## Screenshots
+  
+### Customer View
+![Customer View](screenshots/user_site.png)
+
+### Admin View
+![Admin View](screenshots/admin_site.png)
+
 
 ## Admin
 
