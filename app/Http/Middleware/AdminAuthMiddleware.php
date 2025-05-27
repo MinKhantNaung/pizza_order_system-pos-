@@ -10,22 +10,31 @@ class AdminAuthMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        // dd(url()->current());
-        // dd(route('auth.login'));
+        $user = Auth::user();
 
-        if (!empty(Auth::user())) {
-            // if we go to login or register page with logout
-            if (url()->current() == route('auth.login') || url()->current() == route('auth.register')) {
-                if (Auth::user()->role == 'user') {
-                    return redirect()->route('users.home');
-                }
+        // If user is authenticated
+        if (!empty($user)) {
 
-                return redirect()->route('dashboard');
+            if ($request->routeIs('auth.login') || $request->routeIs('auth.register')) {
+                return $this->redirectToRoleHome($user);
+            }
+
+            if ($user->role === 'user') {
+                return redirect()->route('users.home');
             }
 
             return $next($request);
         }
 
         return $next($request);
+    }
+
+    protected function redirectToRoleHome($user)
+    {
+        if ($user->role === 'user') {
+            return redirect()->route('users.home');
+        }
+
+        return redirect()->route('dashboard');
     }
 }
