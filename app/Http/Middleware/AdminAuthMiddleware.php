@@ -13,15 +13,16 @@ class AdminAuthMiddleware
         // dd(url()->current());
         // dd(route('auth.login'));
 
-        if(!empty(Auth::user())) {
+        if (!empty(Auth::user())) {
             // if we go to login or register page with logout
-            if(url()->current() == route('auth.login') || url()->current() == route('auth.register')) {
-                return back();
+            if (url()->current() == route('auth.login') || url()->current() == route('auth.register')) {
+                if (Auth::user()->role == 'user') {
+                    return redirect()->route('users.home');
+                }
+
+                return redirect()->route('dashboard');
             }
 
-            if (Auth::user()->role == 'user') {
-                return back();
-            }
             return $next($request);
         }
 
